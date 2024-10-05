@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/styles.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/768px-Airbnb_Logo_B%C3%A9lo.svg.png" alt="Airbnb Logo">
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Anywhere">
+            <input type="text" placeholder="Any week">
+            <input type="text" placeholder="Add guests">
+            <button onclick="showCalender()" class="search-btn">🔍</button>
+        </div>
+
+        <div class="header-right">
+            <span>Airbnb your home</span>
+            <img class="profile-icon" src="../icons/Globe.png" alt="Language">
+            <img class="profile-option" src="../icons/Profile Options.png" alt="Menu">
+        </div>
+    </header>
+
+
+
+    <div class="calendar show">
+        <h2>
+            when's your trip?
+        </h2>
+
+        <div class="choosedate-flex">
+            <div class="choosedate">
+                <p>Choose Dates</p>
+                
+            </div>
+            <div class="flex">
+                <p>i'm flexible</p>
+                
+            </div>
+        </div>
+    
+
+        <section>
+            <ul class="days">
+                <li>S</li>
+                <li>M</li>
+                <li>T</li>
+                <li>W</li>
+                <li>T</li>
+                <li>F</li>
+                <li>S</li>
+            </ul>
+            <div class="month">
+                August
+            </div>
+            <ul class="dates"></ul>
+
+
+        </section>
+
+        <div class="calendarchooseday">
+            <p id="current">Current dates</p>
+            <p> +1 day</p>
+            <p>+2 days</p>
+
+        </div>
+
+        <div class="left">
+            <p>4 homes availables</p>
+        </div>
+    </div>
+    
+    <script src="../scripts/script.js"></script>
+
+
+    <div class="center-toggle-container">
+        <div class="toggle-container">
+            <div class="toggle-text">
+                <h3>Display total price</h3>
+                <p>Includes all fees, before taxes</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Icon Navigation Section -->
+    <nav class="icon-nav">
+        <ul>
+            <li>
+                <img src="../icons/Rooms Icon.png" alt="Rooms Icon">
+                <a href="#">Rooms</a>
+            </li>
+            <li>
+                <img src="../icons/Farms Icon.png" alt="Farms Icon">
+                <a href="#">Farms</a>
+            </li>
+            <li>
+                <img src="../icons/Pools Icon.png" alt="Amazing Pools Icon">
+                <a href="#">Amazing Pools</a>
+            </li>
+            <li>
+                <img src="../icons/Country Side Icon.png" alt="Countryside Icon">
+                <a href="#">Countryside</a>
+            </li>
+            <li>
+                <img src="../icons/National Parks Icon.png" alt="National parks Icon">
+                <a href="#">National parks</a>
+            </li>
+            <li>
+                <img src="../icons/Historical Homes Icon.png" alt="Historical homes Icon">
+                <a href="#">Historical homes</a>
+            </li>
+            <li>
+                <img src="../icons/Group 7.png" alt="Tiny homes Icon">
+                <a href="#">Tiny homes</a>
+            </li>
+            <li>
+                <img src="../icons/Group 8.png" alt="Lakefront Icon">
+                <a href="#">Lakefront</a>
+            </li>
+            <li>
+                <img src="../icons/Group 9.png" alt="Cabins Icon">
+                <a href="#">Cabins</a>
+            </li>
+            <li>
+                <img src="../icons/Group 10.png" alt="BeachfrontIcon">
+                <a href="#">Beachfront</a>
+            </li>
+            <li>
+                <img src="../icons/Group 11.png" alt="Castles Icon">
+                <a href="#">Castles</a>
+            </li>
+            <li>
+                <img src="../icons/Group 12.png" alt="Design Icon">
+                <a href="#">Design</a>
+            </li>
+            <li>
+                <img src="../icons/Group 13.png" alt="Amazing views Icon">
+                <a href="#">Amazing views</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Grid container with 5 cards -->
+    <section class="listings">
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="main-cardframe">
+                    <div class="heart">❤</div>
+                    <img src="../icons/Profile Card.png" alt="Rooms Icon">
+                    <div class="pagination-dots"></div>
+                </div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+
+            <div class="card">
+                <div class="main-cardframe">
+                    <div class="heart">❤</div>
+                    <img src="../icons/Profile Card.png" alt="Rooms Icon">
+                    <div class="pagination-dots"></div>
+                </div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+            <div class="card">
+                <div class="main-cardframe">
+                    <div class="heart">❤</div>
+                    <img src="../icons/Profile Card.png" alt="Rooms Icon">
+                    <div class="pagination-dots"></div>
+                </div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+            <div class="card">
+                <div class="main-cardframe">
+                    <div class="heart">❤</div>
+                    <img src="../icons/Profile Card.png" alt="Rooms Icon">
+                    <div class="pagination-dots"></div>
+                </div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+            <div class="card">
+                <div class="main-cardframe">
+                    <div class="heart">❤</div>
+                    <img src="../icons/Profile Card.png" alt="Rooms Icon">
+                    <div class="pagination-dots"></div>
+                </div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li>
+                <img src="../icons/Search_Icon.svg" alt="Explore Icon">
+                <a href="#">Explore</a>
+            </li>
+            <li>
+                <img class="Wishlisticon" src="../icons/Wishlist Tab.png" alt="Wishlist Icon">
+
+            </li>
+            <li>
+                <img src="../icons/Trips Tab.png" alt="Trips Icon">
+            </li>
+            <li>
+                <img src="../icons/Inbox Tab.png" alt="Inbox Icon">
+            </li>
+            <li>
+                <img src="../icons/Profile Tab.png" alt="Profile Icon">
+            </li>
+        </ul>
+    </nav>
+    
+
+    <footer>
+        <div class="footer-left">
+            <span>© 2023 Airbnb, Inc.</span>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Sitemap</a>
+            <a href="#">Company details</a>
+            <a href="#">Destinations</a>
+        </div>
+
+        <div class="footer-right">
+            <span><img src="../icons/Globe.png" alt="Globe Icon"> English (IN)</span>
+            <span>₹ INR</span>
+            <a href="#">Support & resources</a>
+        </div>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb - Carte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left img {
+            height: 40px;
+        }
+
+        /* Barre de recherche */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            padding: 10px 20px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: transparent;
+            padding: 10px;
+            margin-right: 10px;
+            flex-grow: 1;
+        }
+
+        .search-bar input::placeholder {
+            color: #888;
+        }
+
+        .search-btn {
+            background-color: #ff5a5f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Header Right */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .header-right span, .header-right img {
+            cursor: pointer;
+        }
+
+        .header-right img {
+            width: 28px;
+        }
+
+
+        .center-toggle-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            background-color: #fff;
+            width: 450px;
+            justify-content: space-between;
+        }
+
+        .toggle-text h3 {
+            font-size: 16px;
+            margin-right: 15px;
+            color: black;
+        }
+
+        .toggle-text p {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Icon navigation */
+        .icon-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+            list-style: none;
+            padding: 0 20px;
+            white-space: nowrap;
+        }
+
+        .icon-nav ul li {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .icon-nav ul li img {
+            display: block;
+            margin: 0 auto;
+            width: 40px;
+            height: 40px;
+        }
+
+        .icon-nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .icon-nav ul li a:hover {
+            color: #ff5a5f;
+        }
+
+        /* Listings Section */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 460px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .heart {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px;
+            color:#666;
+            font-size: 18px;
+        }
+
+        .pagination-dots {
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .pagination-dots div {
+            width: 6px;
+            height: 6px;
+            background-color: #c4c4c4;
+            border-radius: 50%;
+        }
+
+        .pagination-dots div.active {
+            background-color: #888;
+        }
+
+        .card-text {
+            text-align: left;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .card h2, .card h5, .card p {
+            margin: 5px 0;
+        }
+
+        .card h2 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card h5 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .card p {
+            font-size: 14px;
+            color:black;
+            font-weight: bold;
+        }
+
+        .star-rating {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .circle-image {
+            position: absolute;
+            bottom: 85px;
+            left: 15px;
+            width: 25px;
+            height: 35px;
+            background-color: #333;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/768px-Airbnb_Logo_B%C3%A9lo.svg.png" alt="Airbnb Logo">
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Anywhere">
+            <input type="text" placeholder="Any week">
+            <input type="text" placeholder="Add guests">
+            <button class="search-btn">🔍</button>
+        </div>
+
+        <div class="header-right">
+            <span>Airbnb your home</span>
+            <img src=".\\img\Globe.png" alt="Language">
+            <img src="..\\img\Profile Options.png" alt="Menu">
+        </div>
+    </header>
+
+    <!-- Centered Toggle Switch -->
+    <div class="center-toggle-container">
+        <div class="toggle-container">
+            <div class="toggle-text">
+                <h3>Display total price</h3>
+                <p>Includes all fees, before taxes</p>
+            </div>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Icon Navigation Section -->
+    <nav class="icon-nav">
+        <ul>
+            <li>
+                <img src="..\\img\\Rooms Icon.png" alt="Rooms Icon">
+                <a href="#">Rooms</a>
+            </li>
+            <li>
+                <img src="..\\img\\Farms Icon.png" alt="Farms Icon">
+                <a href="#">Farms</a>
+            </li>
+            <li>
+                <img src="..\\img\\Pools Icon.png" alt="Amazing Pools Icon">
+                <a href="#">Amazing Pools</a>
+            </li>
+            <li>
+                <img src="..\\img\\Country Side Icon.png" alt="Countryside Icon">
+                <a href="#">Countryside</a>
+            </li>
+            <li>
+                <img src="..\\img\National Parks Icon.png" alt="National parks Icon">
+                <a href="#">National parks</a>
+            </li>
+            <li>
+                <img src="..\\img\Historical Homes Icon.png" alt="Historical homes Icon">
+                <a href="#">Historical homes</a>
+            </li>
+            <li>
+                <img src="..\\img\Group 7.png" alt="Tiny homes Icon">
+                <a href="#">Tiny homes/a>
+            </li>
+            <li>
+                <img src="..\\img\Group 8.png" alt="Lakefront Icon">
+                <a href="#">Lakefront</a>
+            </li>
+            <li>
+                <img src="..\\img\Group 9.png" alt="Cabins Icon">
+                <a href="#">Cabins</a>
+            </li>
+            <li>
+                <img src="..\\img\Group 10.png" alt="BeachfrontIcon">
+                <a href="#">Beachfront</a>
+            </li>
+            <li>
+                <img src="..\\img\Group 11.png" alt="Castles Icon">
+                <a href="#">Castles</a>
+            </li>
+            <li>
+                <img src="..\\img\Group 12.png" alt="Design Icon">
+                <a href="#">Design</a>
+            </li>
+            <li>
+                <img src="..\\img\Group 13.png" alt="Amazing views Icon">
+                <a href="#">Amazing views</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Grid container with 5 cards -->
+    <section class="listings">
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="heart">❤</div>
+                <div><img src="..\\img\Profile Card.png" alt="Rooms Icon"></div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="heart">❤</div>
+                <div><img src="..\\img\Profile Card.png" alt="Rooms Icon"></div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="heart">❤</div>
+                <div><img src="..\\img\Profile Card.png" alt="Rooms Icon"></div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="heart">❤</div>
+                <div><img src="..\\img\Profile Card.png" alt="Rooms Icon"></div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+
+            <!-- Card 5 (nouvelle carte) -->
+            <div class="card">
+                <div class="heart">❤</div>
+                <div><img src="..\\img\Profile Card.png" alt="Rooms Icon"></div>
+                <div class="pagination-dots">
+                    <div class="active"></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="card-text">
+                    <h2>Hyderabad, India</h2>
+                    <h5>Design with Rahul</h5>
+                    <h5>UX designer</h5>
+                    <p>₹1,500 screen</p>
+                </div>
+                <div class="star-rating">★ 5.0</div>
+            </div>
+        </div>
+    </section>
+
+
+
+</body>
+</html>

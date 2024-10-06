@@ -503,6 +503,7 @@ footer {
 .bottom-nav{
     display: none;
 }
+
 @media (max-width: 450px) {
     .grid {
         grid-template-columns: repeat(1, 1fr);
@@ -704,5 +705,307 @@ footer {
     .Wishlisticon {
         width: 40px !important;
         height: 40px !important;
+    }
+}
+
+/****Popup****/
+
+@media screen and (min-width: 440px) {
+    .popup {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 431px){
+    #profilePopup {
+        background-color: #F0ECE9;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        border-radius: 20px 20px 0 0;
+        max-height: 373vh;
+        height: 132vh;
+        z-index: 102;
+        width: calc(100% - 32px);
+        margin-left: 16px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        transition: bottom 0.5s ease-in-out;
+        animation: slideUp 0.5s ease-in-out;
+        transform: translateY(50%); 
+        will-change: transform;
+        overflow-y: hidden;
+    }
+    
+    #profilePopup .scrollable-content {
+        overflow-y: auto;
+        height: 100%;
+        padding: 10px;
+        max-height: 100%;
+    }
+    
+    #profilePopup .scrollable-content {
+        overflow-y: scroll;
+        height: 100%;
+        padding: 10px;
+        max-height: 100%;
+        width: 105%;
+        padding-right: 20px;
+    }
+    
+    
+    #profilePopup .scrollable-content::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    #profilePopup .scrollable-content::-webkit-scrollbar-track {
+        background: #f0f0f0; 
+    }
+    
+    #profilePopup .scrollable-content::-webkit-scrollbar-thumb {
+        background-color: #888; 
+        border-radius: 10px;
+        border: 2px solid #f0f0f0; 
+    }
+    
+    #profilePopup .scrollable-content::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+    
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(50%);
+        }
+    }
+    
+    .popup.expanded {
+        transform: translateY(-100%); 
+        height: 100%; 
+        max-width: 100%; 
+        border-radius: 0; 
+    }
+    
+    .close-btn {
+        position: relative;
+        margin-left: -310px;
+        margin-bottom: 10px;
+        background: #fff;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 3;
+        display: block;
+        padding: 6px;
+        width: 10%;
+        border-radius: 50%;
+        margin-top: 2px;
+    }
+    
+    .profile-btn {
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 101;
+    }
+        
+    .overlay.visible {
+        opacity: 1;
+        display: flex;
+    }
+
+    .popup.visible {
+        bottom: 0;
+    }
+    
+    .hidden {
+        display: none; 
+    }
+
+    
+    
+    .popup-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    
+    .top-indicator {
+        width: 40px;
+        height: 4px;
+        background: #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        border: none; 
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .profile-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+    
+    .profile-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-left: 20px;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    
+    .profile-left h3 {
+        margin-top: 10px;
+        font-size: 22px;
+        font-weight: 900;
+    }
+    
+    .superhost {
+        font-size: 14px;
+        color: #666;
+        margin-top: 5px;
+    }
+    
+    .user-details-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .review-section, .hosting-info {
+        font-size: 14px;
+        color: #666;
+        padding: 5px 0;
+    }
+    
+    .review-section span, .hosting-info span {
+        display: block;
+    }
+    
+    span {
+        font-size: 18px;
+        border-bottom: 1px solid #F0ECE9;
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+    
+    .superhost {
+        font-weight: 700;
+        font-size: 20px;
+    }
+    
+    .profile-details {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+        border-bottom: 2px solid #000;
+        margin-bottom: 20px;
+    }
+    
+    .profile-details li {
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .profile-details li strong {
+        min-width: 100px;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        border-bottom: 2px solid #000;
+        margin-bottom: 20px;
+    }
+    
+    .tag {
+        padding: 8px 15px;
+        background-color: #e5dace;
+        border-radius: 20px;
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-top: -5px;
+    }
+    
+    .trips {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .trip-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: #e0f7e9;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 40%;
+        margin-left: 20px;
+    }
+    
+    .trip-item:nth-child(2) {
+        background-color: #d5f0ff;
+    }
+    
+    .trip-year {
+        margin-right: 15px;
+        align-items: start;
+    }
+    
+    .trip-location {
+        color: #333;
+        font-weight: bold;
     }
 }

@@ -92,7 +92,6 @@
         </div>
     </div>
 
-    <!-- Icon Navigation Section -->
     <nav class="icon-nav">
         <ul>
             <li>
@@ -151,10 +150,8 @@
         </ul>
     </nav>
 
-    <!-- Grid container with 5 cards -->
     <section class="listings">
         <div class="grid">
-            <!-- Card 1 -->
             <div class="card">
                 <div class="main-cardframe">
                     <div class="heart">❤</div>
@@ -280,11 +277,76 @@
                 <img src="../icons/Inbox Tab.png" alt="Inbox Icon">
             </li>
             <li>
-                <img src="../icons/Profile Tab.png" alt="Profile Icon">
+                <button id="profileButton" class="profile_btn">Profile</button>
             </li>
         </ul>
     </nav>
+
+    <!--Popup profile-->
+
+    <div id="overlay" class="overlay hidden"></div>
+
+    <div id="profilePopup" class="popup hidden">
+        <div class="scrollable-content" id="scrollable-content">
+            <div class="popup-header">
+                <button class="top-indicator" id="top-indicator"></button>
+                <button class="close-btn hidden" id="closeButton">X</button>
+                <div class="profile-info">
+                    <div class="profile-left">
+                        <img src="../icons/profile_img.jpeg" alt="Profile Image" class="profile-image">
+                        <h3 class="nom">Pedro</h3>
+                        <p class="superhost">🏆Superhost</p>
+                    </div>
+                    <div class="user-details-right">
+                        <div class="review-section">
+                            <span class="desc1">17 Reviews</span>
+                            <span class="desc2">4.94★ Rating</span>
+                            <span class="desc3">8 Years hosting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="profile-details">
+                <li><strong>My work:</strong> UX designer</li>
+                <li><strong>Fun fact:</strong> I am open for remote jobs</li>
+                <li><strong>For guests, I always:</strong> Share local tips</li>
+                <li><strong>I'm obsessed with:</strong> Traveling & tennis</li>
+                <li><strong>Pets:</strong> All my plants</li>
+                <li><strong>Born in  the 20s</strong></li>
+                <li><strong>Pets:My biography title:</strong> Only vegan at Home</li>
+                <li><strong>Speaks English, Telugu & Hindi</strong></li>
+                <li><strong>What’s for breakfast:</strong> Overnight oats</li>
+                <li><strong>I spend too much time:</strong> Looking at design</li>
+                <li><strong>Where I went to school:</strong> India</li>
+            </ul>
+            <div class="container">
+                <h2>Ask Pedro about</h2>
+                <div class="tags">
+                    <div class="tag">Art</div>
+                    <div class="tag">Building things</div>
+                    <div class="tag">Cooking</div>
+                    <div class="tag">Crafting</div>
+                    <div class="tag">Cultural heritage</div>
+                    <div class="tag">Design</div>
+                    <div class="tag">Tennis</div>
+                    <div class="tag">Travel</div>
+                </div>
+                <h2>Pedro's past trips</h2>
+                <div class="trips">
+                    <div class="trip-item">
+                        <div class="trip-year">'22</div>
+                        <div class="trip-location">Dandeli, Karnataka</div>
+                    </div>
+                    <div class="trip-item">
+                        <div class="trip-year">'21</div>
+                        <div class="trip-location">Srisailam, Andhra Pradesh</div>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
     
+    <!--footer-->
 
     <footer>
         <div class="footer-left">
